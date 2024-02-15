@@ -58,7 +58,7 @@ public:
     void ConstructOPPAC_10(G4double Pos_PPAC_10);
     void ConstructSilicon_detector(G4double Pos_Silicon);
     void CreateAndPlaceShield(G4double thickness, G4double size, G4double position, G4LogicalVolume* motherVolume) ;
-    void Sphereball( G4double position);
+    void Rock( G4double position);
 
 private:
      G4Box  *sBox,*FoShield, *TShield,*fShield,*sShield,*sScore,*solidDetector;
@@ -82,8 +82,8 @@ private:
      G4double           fBoxSize;
      G4Material*        fMaterial;     
      G4Material *Air, *Aerogel,  *polyethylene, *NaI, *CF4 ;
-     G4Material *siliconMaterial;
-     G4Element  *Na, *I, *C,*N,*O,*F;
+     G4Material *siliconMaterial,*rock;
+     G4Element  *Na, *I, *C,*N,*O,*F,*Al,*Si,*Fe;
      G4Material *Vacc;     
 
      void DefineMaterials();

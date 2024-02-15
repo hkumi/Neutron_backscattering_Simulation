@@ -38,6 +38,10 @@ void DetectorConstruction::DefineMaterials()
   N  = new G4Element("Nitrogen","N",7.,14.007*g/mole);
   O  = new G4Element("Oxygen","O",8.,15.999*g/mole);
   F  = new G4Element("Fluorine","F",9.,18.998*g/mole);
+  Al = new G4Element("Aluminium", "Al", 13., 26.982*g/mole);
+  Si = new G4Element("Silicon","Si",z= 14., a= 28.085*g/mole);
+  Fe = new G4Element("Iron","Fe",z= 26., a= 55.85*g/mole);
+
 
    // pressurized water
   G4Element* H  = new G4Element("TS_H_of_Water" ,"H" , 1., 1.0079*g/mole);
@@ -61,6 +65,17 @@ void DetectorConstruction::DefineMaterials()
   polyethylene = new G4Material("polyethylene", 0.93*g/cm3, ncomponents=2, kStateSolid, 293*kelvin, 1*atmosphere);
   polyethylene->AddElement(Hpe, natoms=4);
   polyethylene->AddElement(Cpe, natoms=2);
+
+  //rock material. 
+
+   //rock
+    rock = new G4Material("rock", 2.8*g/cm3, 5);
+    rock->AddElement(O, massfraction=46.1*perCent);
+    rock->AddElement(Si, massfraction=28.2*perCent);
+    rock->AddElement(Al, massfraction=8.2*perCent);
+    rock->AddElement(Fe, massfraction=5.6*perCent);
+    rock->AddElement(C, massfraction=11.9*perCent);
+    
 
   //silicon_detector material
   nist->FindOrBuildMaterial("G4_Si");
@@ -468,34 +483,32 @@ void DetectorConstruction::CreateAndPlaceShield(G4double thickness, G4double siz
                                                0,true);
 }
 
-void DetectorConstruction::Sphereball( G4double position) {
-     G4double minSphereradius =  0*mm; 
-     G4double maxSphereradius = 30*mm; 
-     G4Sphere* sphereball = new G4Sphere("sphereball", minSphereradius/2, maxSphereradius/2 , 0*deg,360*deg,0*deg,180*deg);
-     G4LogicalVolume* sphereVolume = new G4LogicalVolume(sphereball, polyethylene, "Sphere");
-     G4PVPlacement* spherePlacement  = new G4PVPlacement(0,
+void DetectorConstruction::Rock( G4double position) { 
+     G4Box* rockbox = new G4Box("rockbox", 1.5*m/2, 1.5*m/2 , 0.5*m/2);
+     G4LogicalVolume* rockVolume = new G4LogicalVolume(rockbox, rock, "Rock");
+     G4PVPlacement* rockPlacement  = new G4PVPlacement(0,
                                                G4ThreeVector(0.*mm, 0.*mm, position),
-                                               sphereVolume,
-                                               "Sphere",
+                                               rockVolume,
+                                               "Rock",
                                                fLBox,
                                                false,
                                                0,true);
      G4VisAttributes* blue = new G4VisAttributes(G4Colour::Blue());
-  
+
      blue->SetVisibility(true);
      blue->SetForceAuxEdgeVisible(true);
 
 
-     sphereVolume->SetVisAttributes(blue);
+     rockVolume->SetVisAttributes(blue);
 
 
-}  
+}
 
 
 G4VPhysicalVolume *DetectorConstruction::Construct()
 {
 
-  fBoxSize = 30*cm;
+  fBoxSize = 3*m;
 
 
   sBox = new G4Box("world",                             //its name
@@ -513,7 +526,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             false,                      //no boolean operation
                             0);                         //copy number
 
-  Sphereball(2.00*mm); 
+  Rock(0.5*m); 
  
 
 
@@ -521,7 +534,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   // shielding
 /////...........first stack layer ...........................................................................
 
-  fhThick = 0.06 * mm;   // this will be for a thickness of  0.12mm. halfZ
+  //fhThick = 0.06 * mm;   // this will be for a thickness of  0.12mm. halfZ
 
   if (fhThick == 0.06 * mm){
      G4double fhSize = 50 * mm;
