@@ -17,9 +17,15 @@
 
 
 
-#/gps/position 0. 0. -19. mm
-#/gps/direction 0. 0. 1. 
 
-/run/beamOn  1
+/run/beamOn  10
 #/run/beamOn  99000000
 
+/score/create/boxMesh boxMesh_1
+/score/mesh/boxSize 1.5 1.5 0.5 m
+/score/mesh/nBin 30 30 30
+#/score/create/filter particleFilter1 particleFilter
+#/score/filter/particleFilter/particle neutron
+
+/score/close
+/score/list

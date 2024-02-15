@@ -13,7 +13,7 @@
 #include "G4VisExecutive.hh"
 #include "Randomize.hh"
 #include "G4GeneralParticleSource.hh"
-
+#include "G4ScoringManager.hh"
 #include "construction.hh"
 #include "physics.hh"
 #include "FTFP_BERT.hh"
@@ -24,6 +24,7 @@
 int main(int argc, char** argv)
 {
     G4RunManager *runManager = new G4RunManager();
+    G4ScoringManager *myscorer = G4ScoringManager::GetScoringManager();
     runManager->SetUserInitialization(new DetectorConstruction());
      // Physics list
     runManager->SetUserInitialization(new PhysicsList());   

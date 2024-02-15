@@ -422,6 +422,7 @@ CMakeFiles/sim.dir/sim.cc.o
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4Scene.icc
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SceneHandlerList.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SceneList.hh
+ /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4ScoringManager.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SigmaMinus.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SigmaPlus.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SigmaZero.hh
@@ -443,6 +444,7 @@ CMakeFiles/sim.dir/sim.cc.o
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4Sphere.icc
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4StackManager.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4StackedTrack.hh
+ /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4StatDouble.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4Step.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4Step.icc
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4StepPoint.hh
@@ -574,6 +576,8 @@ CMakeFiles/sim.dir/sim.cc.o
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VRML2File.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VSceneHandler.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VSceneHandler.icc
+ /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VScoreWriter.hh
+ /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VScoringMesh.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VSolid.hh
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VSolid.icc
  /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VStateDependent.hh

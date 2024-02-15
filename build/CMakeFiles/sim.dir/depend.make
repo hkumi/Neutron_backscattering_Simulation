@@ -421,6 +421,7 @@ CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4Scene.icc
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SceneHandlerList.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SceneList.hh
+CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4ScoringManager.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SigmaMinus.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SigmaPlus.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4SigmaZero.hh
@@ -442,6 +443,7 @@ CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4Sphere.icc
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4StackManager.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4StackedTrack.hh
+CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4StatDouble.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4Step.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4Step.icc
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4StepPoint.hh
@@ -573,6 +575,8 @@ CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VRML2File.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VSceneHandler.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VSceneHandler.icc
+CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VScoreWriter.hh
+CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VScoringMesh.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VSolid.hh
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VSolid.icc
 CMakeFiles/sim.dir/sim.cc.o: /home/harriet/Geant4/geant4-v11.1.3/geant4_install/include/Geant4/G4VStateDependent.hh
