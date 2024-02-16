@@ -18,14 +18,18 @@
 
 
 
-/run/beamOn  10
+/run/beamOn  1
 #/run/beamOn  99000000
+#/score/create/boxMesh boxMesh_1
+#/score/mesh/boxSize 1.5 1.5 0.5 m
+#/score/mesh/nBin 30 30 30
+#/score/mesh/translate/xyz 0. 0. 1. m
+#/score/quantity/nOfTrack numberTracks
+#/score/filter/particle filterNeutron neutron
 
-/score/create/boxMesh boxMesh_1
-/score/mesh/boxSize 1.5 1.5 0.5 m
-/score/mesh/nBin 30 30 30
-#/score/create/filter particleFilter1 particleFilter
-#/score/filter/particleFilter/particle neutron
+#/score/dumpQuantityToFile boxMesh_1  numberTracks nOfTrackneutron.txt
 
-/score/close
-/score/list
+#/score/close
+#/score/list
+#/vis/enable
+#/score/drawProjection boxMesh_1 numberTracks

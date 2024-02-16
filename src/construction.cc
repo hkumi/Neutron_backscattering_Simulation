@@ -43,14 +43,12 @@ void DetectorConstruction::DefineMaterials()
   Fe = new G4Element("Iron","Fe",z= 26., a= 55.85*g/mole);
 
 
-   // pressurized water
-  G4Element* H  = new G4Element("TS_H_of_Water" ,"H" , 1., 1.0079*g/mole);
-  G4Material* H2O = 
-  new G4Material("Water_ts", 1.000*g/cm3, ncomponents=2,
-                         kStateLiquid, 593*kelvin, 150*bar);
-  H2O->AddElement(H, natoms=2);
-  H2O->AddElement(O, natoms=1);
-  H2O->GetIonisation()->SetMeanExcitationEnergy(78.0*eV);
+   // Water
+  auto H = new G4Element("Hydrogen", "H", z = 1, a = 1.01 * g / mole);
+  water = new G4Material("Water",  1.0 * g / cm3,  ncomponents=2);
+  water->AddElement(H, 2);
+  water->AddElement(O, 1);
+
   // vacuum
   Vacc = new G4Material("Galactic", z=1, a=1.01*g/mole, Vdens, kStateGas, Vtemp, Vpres);
   // air
@@ -59,6 +57,12 @@ void DetectorConstruction::DefineMaterials()
   Air->AddElement(N, massfraction=70.*perCent);
   Air->AddElement(O, massfraction=30.*perCent);
 
+    // polyethilene
+  G4Element* Hpe = new G4Element("TS_H_of_Polyethylene", "H", 1, 1.0079*g/mole);
+  G4Element* Cpe = new G4Element("Carbon", "C", 6, 12.01*g/mole);
+  polyethylene = new G4Material("polyethylene", 0.93*g/cm3, ncomponents=2, kStateSolid, 293*kelvin, 1*atmosphere);
+  polyethylene->AddElement(Hpe, natoms=4);
+  polyethylene->AddElement(Cpe, natoms=2);
   
   //rock material. 
 
@@ -69,44 +73,22 @@ void DetectorConstruction::DefineMaterials()
     rock->AddElement(Al, massfraction=8.2*perCent);
     rock->AddElement(Fe, massfraction=5.6*perCent);
     rock->AddElement(C, massfraction=11.9*perCent);
-    
 
-  //silicon_detector material
-  nist->FindOrBuildMaterial("G4_Si");
-  siliconMaterial = G4Material::GetMaterial("G4_Si");//G4Material::GetMaterial("G4_Si");
- //...................................creating the optical detector material ...................................
-//
-
- 
-  
- 
-
-
-//...............creating the materials for the scintillator..............................
-  Na = nist->FindOrBuildElement("Na");
-  I = nist->FindOrBuildElement("I");
-  NaI = new G4Material("NaI", 3.67*g/cm3, 2);
-  NaI->AddElement(Na, 1);
-  NaI->AddElement(I, 1);
-
-
-
-//....................End of scintillator material........................................
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo.....
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-void DetectorConstruction::ConstructOPPAC_1(G4double Pos_PPAC_1)
+void DetectorConstruction::ConstructScorer(G4double Pos_PPAC_1)
 {
 
 // scores
-  G4double ScThick_1 =  3.0*mm;
+  G4double ScThick_1 =  0.5*m;
 
   auto sScore_1 = new G4Box("sScore_1",
-                            50/2*mm,50/2*mm,ScThick_1/2);
+                            2.5/2*m,2.5/2*m,ScThick_1/2);
 
   auto fLScore_1 = new G4LogicalVolume(sScore_1,
-                                        NaI,
+                                        polyethylene,
                                       "fLScore_1");
 
   auto fPScore_r_1 = new G4PVPlacement(0,
@@ -122,7 +104,7 @@ void DetectorConstruction::ConstructOPPAC_1(G4double Pos_PPAC_1)
 
 
 void DetectorConstruction::Rock( G4double position) { 
-     G4Box* rockbox = new G4Box("rockbox", 1.5*m/2, 1.5*m/2 , 0.5*m/2);
+     G4Box* rockbox = new G4Box("rockbox", 1.5*m/2, 1.5*m/2 , 1.0*m/2);
      G4LogicalVolume* rockVolume = new G4LogicalVolume(rockbox, rock, "Rock");
      G4PVPlacement* rockPlacement  = new G4PVPlacement(0,
                                                G4ThreeVector(0.*mm, 0.*mm, position),
@@ -142,11 +124,33 @@ void DetectorConstruction::Rock( G4double position) {
 
 }
 
+void DetectorConstruction::waterwall( G4double position1) { 
+     G4Box* waterbox = new G4Box("rockbox", 1.5*m/2, 1.5*m/2 , 0.5*m/2);
+     G4LogicalVolume* waterVolume = new G4LogicalVolume(waterbox, water, "Water");
+     G4PVPlacement* waterPlacement  = new G4PVPlacement(0,
+                                               G4ThreeVector(0.*mm, 0.*mm, position1),
+                                               waterVolume,
+                                               "Water",
+                                               fLBox,
+                                               false,
+                                               0,true);
+     G4VisAttributes* Red = new G4VisAttributes(G4Colour::Red());
+
+     Red->SetVisibility(true);
+     Red->SetForceAuxEdgeVisible(true);
+
+
+     waterVolume->SetVisAttributes(Red);
+
+
+}
+
+
 
 G4VPhysicalVolume *DetectorConstruction::Construct()
 {
 
-  fBoxSize = 3*m;
+  fBoxSize = 6*m;
 
 
   sBox = new G4Box("world",                             //its name
@@ -164,7 +168,10 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             false,                      //no boolean operation
                             0);                         //copy number
 
-  Rock(0.5*m); 
+  Rock(0.7*m); 
+  waterwall(1.45*m);
+  ConstructScorer(-0.5*m);
+
  
 
 
