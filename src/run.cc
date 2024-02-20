@@ -13,8 +13,11 @@ MyRunAction::MyRunAction()
     // Set axis titles
 
     man->CreateNtuple("Scoring", "Scoring");
-    man->CreateNtupleDColumn("Event");
+    man->CreateNtupleDColumn("Energy");
     man->FinishNtuple(1);
+    man->CreateNtuple("tracklength", "tracklength");
+    man->CreateNtupleDColumn("Tracklength");
+    man->FinishNtuple(2);
 
     man->CreateH2("xy1 ","xy1", 100, -3, 3, 100, -3, 3.0);
 

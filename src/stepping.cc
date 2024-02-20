@@ -42,9 +42,10 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
      if (volume == fScoringVolume_1){
         //fEventAction->AddEdep(edep);
         if (step->IsFirstStepInVolume() ){
-          // preStepPoint = step->GetPreStepPoint();
-          // postStepPoint = step->GetPostStepPoint();
-           //G4double ekin_1  = postStepPoint->GetKineticEnergy()/MeV;
+            preStepPoint = step->GetPreStepPoint();
+            postStepPoint = step->GetPostStepPoint();
+            G4double ekin_1  = postStepPoint->GetKineticEnergy()/MeV;
+            G4double length_1 = step->GetTrack()->GetTrackLength()/m;
            //G4ThreeVector p0_1 = postStepPoint->GetMomentumDirection();
            //G4double angle_1 = std::acos(p0_1.z());
            //G4ThreeVector posPhoton1 = postStepPoint->GetPosition()/m;
@@ -56,8 +57,11 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
            //theEvntID.push_back(evt);
            //Ncol = theEvntID.size();
            //Ncol++;
-           man->FillNtupleDColumn(1, 0, TrackID);
+           man->FillNtupleDColumn(1, 0, ekin_1);
            man->AddNtupleRow(1);
+           man->FillNtupleDColumn(2, 0, length_1);
+           man->AddNtupleRow(2);
+
            totalNeutronsInScorer1++;
            // Print out the total number of neutrons in fScoringVolume_1
            //G4cout << "Total number of Neutrons in Scorer_1: " << totalNeutronsInScorer1 << G4endl;

@@ -150,7 +150,7 @@ void DetectorConstruction::waterwall( G4double position1) {
 G4VPhysicalVolume *DetectorConstruction::Construct()
 {
 
-  fBoxSize = 6*m;
+  fBoxSize = 5*m;
 
 
   sBox = new G4Box("world",                             //its name
@@ -170,9 +170,12 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
   Rock(0.7*m); 
   waterwall(1.45*m);
-  ConstructScorer(-0.5*m);
+  ConstructScorer(-2.0*m);
 
- 
+  //Rock(0.7*m); 
+  //waterwall(1.45*m);
+  //ConstructScorer(-0.5*m);
+
 
 
   return fPBox;
