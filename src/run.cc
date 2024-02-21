@@ -13,17 +13,25 @@ MyRunAction::MyRunAction()
     // Set axis titles
 
     man->CreateNtuple("Scoring", "Scoring");
-    man->CreateNtupleDColumn("Energy");
+    man->CreateNtupleDColumn("BackscatteredEnergy");
     man->FinishNtuple(1);
-    man->CreateNtuple("tracklength", "tracklength");
-    man->CreateNtupleDColumn("Tracklength");
+    man->CreateNtuple("backscatteredtracklength", "backscatteredtracklength");
+    man->CreateNtupleDColumn("BackscatteringTracklength");
     man->FinishNtuple(2);
 
-    man->CreateH2("xy1 ","xy1", 100, -3, 3, 100, -3, 3.0);
+    man->CreateNtuple("Scoring_1", "Scoring_1");
+    man->CreateNtupleDColumn("TransmittedEnergy");
+    man->FinishNtuple(3);
+    man->CreateNtuple("transmittedtracklength", "transmittedtracklength");
+    man->CreateNtupleDColumn("TransmittedTracklength");
+    man->FinishNtuple(4);
 
-    man->CreateH2("a1 ","angle vs energy_1", 100, 0, 100, 100, 0, 100.0);
 
-    man->CreateH1("z1 ","z1", 100,-100 , 100);
+    //man->CreateH2("xy1 ","xy1", 100, -3, 3, 100, -3, 3.0);
+
+    //man->CreateH2("a1 ","angle vs energy_1", 100, 0, 100, 100, 0, 100.0);
+
+    //man->CreateH1("z1 ","z1", 100,-100 , 100);
 
 
 

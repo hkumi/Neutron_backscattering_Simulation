@@ -16,14 +16,12 @@
 /gps/pos/sigma_y 0.5 cm
 
 
-
-
-/run/beamOn  10000
+/run/beamOn  1000000
 #/run/beamOn  99000000
 #/score/create/boxMesh boxMesh_1
 #/score/mesh/boxSize 1.5 1.5 0.5 m
 #/score/mesh/nBin 30 30 30
-#/score/mesh/translate/xyz 0. 0. 1. m
+#/score/mesh/translate/xyz 0. 0. -4. m
 #/score/quantity/nOfTrack numberTracks
 #/score/filter/particle filterNeutron neutron
 

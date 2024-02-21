@@ -78,7 +78,7 @@ void DetectorConstruction::DefineMaterials()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo.....
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-void DetectorConstruction::ConstructScorer(G4double Pos_PPAC_1)
+void DetectorConstruction::ConstructScorer_back(G4double Pos_PPAC_1)
 {
 
 // scores
@@ -100,6 +100,34 @@ void DetectorConstruction::ConstructScorer(G4double Pos_PPAC_1)
                                     0,true);
   fScoringVolume_1 = fLScore_1;
 }
+
+
+void DetectorConstruction::ConstructScorer_front(G4double Pos_PPAC_2)
+{
+
+// scores
+  G4double ScThick_2 =  0.5*m;
+
+  auto sScore_2 = new G4Box("sScore_2",
+                            2.5/2*m,2.5/2*m,ScThick_2/2);
+
+  auto fLScore_2 = new G4LogicalVolume(sScore_2,
+                                        polyethylene,
+                                      "fLScore_2");
+
+  auto fPScore_r_2 = new G4PVPlacement(0,
+                                    G4ThreeVector(0.*mm,0.*mm,Pos_PPAC_2),
+                                    fLScore_2,
+                                    "fPScore_r_2",
+                                    fLBox,
+                                    false,
+                                    0,true);
+  fScoringVolume_2 = fLScore_2;
+}
+
+
+
+
 
 
 
@@ -150,7 +178,7 @@ void DetectorConstruction::waterwall( G4double position1) {
 G4VPhysicalVolume *DetectorConstruction::Construct()
 {
 
-  fBoxSize = 5*m;
+  fBoxSize = 6*m;
 
 
   sBox = new G4Box("world",                             //its name
@@ -169,8 +197,9 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             0);                         //copy number
 
   Rock(0.7*m); 
-  waterwall(1.45*m);
-  ConstructScorer(-2.0*m);
+  waterwall(1.5*m);
+  ConstructScorer_front(2.5*m);
+  ConstructScorer_back(-2.0*m);
 
   //Rock(0.7*m); 
   //waterwall(1.45*m);

@@ -33,11 +33,13 @@ public:
    ~DetectorConstruction();
 
     G4LogicalVolume *GetScoringVolume() const {return fScoringVolume_1;}
+    G4LogicalVolume *GetScoringVolume_2() const {return fScoringVolume_2;}
    
 
  
     virtual G4VPhysicalVolume* Construct();
-    void ConstructScorer(G4double Pos_PPAC_1);
+    void ConstructScorer_back(G4double Pos_PPAC_1);
+    void ConstructScorer_front(G4double Pos_PPAC_2);
     void waterwall(G4double position1);   
     void Rock( G4double position);
 
@@ -51,6 +53,7 @@ private:
      G4LogicalVolume   *fLShield1;
      G4LogicalVolume*   logicDetector;
      G4LogicalVolume   *fScoringVolume_1;
+     G4LogicalVolume   *fScoringVolume_2;
    
      G4double       mat_thickness;
 
